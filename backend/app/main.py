@@ -1,5 +1,5 @@
 # ==============================================================================
-# APEX-10: MASTER ARCHITECTURE (v3.0.0 - BLINDAGEM DE EVENTOS & LINHA ZERO)
+# APEX-10: MASTER ARCHITECTURE (v3.0.0 - EVENT SHIELDING & ZERO LINE)
 # Sovereign Creator: Jean Laris
 # Holding: Alantec - Architects of the Future
 # ==============================================================================
@@ -14,21 +14,21 @@ import time
 import asyncio
 
 # ==============================================================================
-# GERENCIAMENTO DO BARRAMENTO DE EVENTOS (LIFESPAN)
+# EVENT BUS MANAGEMENT (LIFESPAN)
 # ==============================================================================
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Inicialização do Barramento de Eventos (2026/2027)
+    # Event Bus Initialization (2026/2027)
     app.state.event_bus_active = True
-    app.state.event_queue = asyncio.Queue(maxsize=10000) # Previne estouro de memória
+    app.state.event_queue = asyncio.Queue(maxsize=10000)  # Prevents memory overflow
     yield
-    # Encerramento gracioso para não perder eventos
+    # Graceful shutdown to prevent event loss
     app.state.event_bus_active = False
 
 app = FastAPI(
     title="APEX-10: Long-Horizon Agentic Orchestration Engine",
     version="3.0.0",
-    description="Arquitetura Soberana com Barramento de Eventos e Linha Zero de Teoria dos Jogos.",
+    description="Sovereign Architecture with Event Bus and Zero Line Game Theory.",
     lifespan=lifespan
 )
 
@@ -44,12 +44,12 @@ def verify_sovereign_token(credentials: HTTPAuthorizationCredentials = Security(
     return credentials.credentials
 
 # ==============================================================================
-# MODELO DE INCENTIVOS (CORREÇÃO DO TYPE MISMATCH)
+# INCENTIVE MODEL (TYPE SAFETY CORRECTION)
 # ==============================================================================
-class IncentivoModel(BaseModel):
+class IncentiveModel(BaseModel):
     id: str
-    alinhado_com: str
-    peso: float = 1.0
+    aligned_with: str
+    weight: float = 1.0
 
 class AgentExecutionRequest(BaseModel):
     agent_id: str
@@ -57,26 +57,26 @@ class AgentExecutionRequest(BaseModel):
     raw_payload: Dict[str, Any]
     cognitive_density: float = Field(default=1.0, ge=0.1, le=2.0)
     anticipatory_tools: Dict[str, Any] = Field(default_factory=dict)
-    incentivos: List[IncentivoModel] = Field(default_factory=list) # Tipado para segurança total
+    incentives: List[IncentiveModel] = Field(default_factory=list)  # Strictly typed
 
 # ==============================================================================
-# LINHA ZERO: LINHA DE CONVERGÊNCIA
+# ZERO LINE: CONVERGENCE LINE
 # ==============================================================================
-class MenteCalibrada:
-    def __init__(self, e1_arquitetura: Dict[str, Any], e2_execucao: Dict[str, Any]):
-        self.e1 = e1_arquitetura
-        self.e2 = e2_execucao
+class CalibratedMind:
+    def __init__(self, e1_architecture: Dict[str, Any], e2_execution: Dict[str, Any]):
+        self.e1 = e1_architecture
+        self.e2 = e2_execution
 
-    def calcular_convergencia(self, incentivos: List[IncentivoModel]) -> bool:
+    def calculate_convergence(self, incentives: List[IncentiveModel]) -> bool:
         """
-        Garante alinhamento estrito dos incentivos com a metas de E1.
-        Sem erro de execução, com performance preditiva.
+        Ensures strict alignment of incentives with E1 goals.
+        Zero execution error, with predictive performance.
         """
-        meta_alvo = self.e1.get("meta_mestra", "soberania")
-        return all(inc.alinhado_com == meta_alvo for inc in incentivos) if incentivos else True
+        target_goal = self.e1.get("master_goal", "sovereignty")
+        return all(inc.aligned_with == target_goal for inc in incentives) if incentives else True
 
 # ==============================================================================
-# MIDDLEWARE: CINCO ATOS SHAKESPEAREANOS
+# MIDDLEWARE: FIVE SHAKESPEAREAN ACTS
 # ==============================================================================
 @app.middleware("http")
 async def shakespearean_five_acts_middleware(request: Request, call_next):
@@ -88,40 +88,39 @@ async def shakespearean_five_acts_middleware(request: Request, call_next):
     return response
 
 # ==============================================================================
-# ENDPOINT COM BARRAMENTO E LINHA ZERO INTEGRADOS
+# ENDPOINT WITH INTEGRATED EVENT BUS AND ZERO LINE
 # ==============================================================================
 @app.post("/apex/execute", status_code=status.HTTP_200_OK)
 async def execute_agent_workflow(
     request: AgentExecutionRequest,
     token: str = Security(verify_sovereign_token)
 ) -> Dict[str, Any]:
+    # 1. Zero Line Validation (Calibrated Mind)
+    e1_config = {"master_goal": "sovereignty"}
+    e2_config = {"active_filter": True}
+    mind = CalibratedMind(e1_architecture=e1_config, e2_execution=e2_config)
     
-    # 1. Validação na Linha Zero (Mente Calibrada)
-    e1_config = {"meta_mestra": "soberania"}
-    e2_config = {"filtro_ativo": True}
-    mente = MenteCalibrada(e1_arquitetura=e1_config, e2_execucao=e2_config)
-
-    if not mente.calcular_convergencia(request.incentivos):
+    if not mind.calculate_convergence(request.incentives):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Incentivos desalinhados da meta E1. Convergência interrompida."
+            detail="Incentives misaligned with E1 goal. Convergence halted."
         )
 
-    # 2. Publicação no Barramento de Eventos
+    # 2. Publish to Event Bus
     event_payload = {
         "timestamp": datetime.utcnow().isoformat(),
         "agent_id": request.agent_id,
         "payload": request.raw_payload
     }
-    
-    # Simulação de envio ao Barramento sem travar a resposta
+
+    # Non-blocking event buffering simulation
     if app.state.event_bus_active:
         await app.state.event_queue.put(event_payload)
 
     return {
         "status": "operational_success",
         "event_buffered": True,
-        "convergencia_inevitavel": True,
+        "inevitable_convergence": True,
         "author": "Jean Laris",
         "holding": "Alantec - Architects of the Future"
     }
