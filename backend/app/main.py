@@ -1,5 +1,5 @@
 # ==============================================================================
-# APEX-10: MASTER ARCHITECTURE (v3.0.0 - BLINDAGEM DE EVENTOS & LINHA ZERO)
+# APEX-10: MASTER ARCHITECTURE (v3.0.1 - BLINDAGEM DE EVENTOS & LINHA ZERO)
 # Sovereign Creator: Jean Laris
 # Holding: Alantec - Architects of the Future
 # ==============================================================================
