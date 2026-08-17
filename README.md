@@ -1,6 +1,10 @@
 > Alantec - Calibrated Mind: Anticipation Engineering applied to versioning.
 > Alantec - Architects of the Future.
 
+<a href="https://github.com/sponsors/Mente-Calibrada">
+  <img src="https://img.shields.io/badge/Sponsor-Patrocinar_Mente--Calibrada-blue?style=for-the-badge&logo=github-sponsors" alt="Patrocinar Mente-Calibrada">
+</a>
+
 # Full Stack FastAPI Template
 
 <a href="https://github.com/fastapi/full-stack-fastapi-template/actions?query=workflow%3A%22Test+Docker+Compose%22" target="_blank"><img src="https://github.com/fastapi/full-stack-fastapi-template/workflows/Test%20Docker%20Compose/badge.svg" alt="Test Docker Compose"></a>
@@ -234,5 +238,6 @@ Check the file [release-notes.md](./release-notes.md).
 ## License
 
 The Full Stack FastAPI Template is licensed under the terms of the MIT license.
-#   C o r p o r a t i o n   P a s s   -   A t u a l i z a ç ã o   d e   A t i v a ç ã o  
+#   C o r p o r a t i o n   P a s s   -   A t u a l i z a ï¿½ ï¿½ o   d e   A t i v a ï¿½ ï¿½ o 
+ 
  
