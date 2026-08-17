@@ -240,4 +240,5 @@ Check the file [release-notes.md](./release-notes.md).
 The Full Stack FastAPI Template is licensed under the terms of the MIT license.
 #   C o r p o r a t i o n   P a s s   -   A t u a l i z a ï¿½ ï¿½ o   d e   A t i v a ï¿½ ï¿½ o 
  
+ A t u a l i z a ç ã o   d e   a r q u i t e t u r a   =Ø€Þ 
  
