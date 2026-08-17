@@ -1,9 +1,9 @@
-> Alantec - Calibrated Mind: Anticipation Engineering applied to versioning.
-> Alantec - Architects of the Future.
-
-<a href="https://github.com/sponsors/Mente-Calibrada">
+><a href="https://github.com/sponsors/Mente-Calibrada">
   <img src="https://img.shields.io/badge/Sponsor-Patrocinar_Mente--Calibrada-blue?style=for-the-badge&logo=github-sponsors" alt="Patrocinar Mente-Calibrada">
 </a>
+
+> Alantec - Calibrated Mind: Anticipation Engineering applied to versioning.
+> Alantec - Architects of the Future.
 
 # Full Stack FastAPI Template
 
